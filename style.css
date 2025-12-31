@@ -1,0 +1,81 @@
+@font-face {
+  font-family: "DIN";
+  src: url("font/DINNextLTArabic-Light.ttf");
+}
+
+body {
+  margin: 0;
+  font-family: "DIN", sans-serif;
+  background: #f4f6f7;
+  text-align: center;
+}
+
+.title {
+  margin: 25px 0;
+  font-size: 42px;
+  color: #0b7a75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 10px;
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  perspective: 1200px;
+}
+
+.card-inner {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.front {
+  background: #ffffff;
+}
+
+.front img {
+  width: 70%;
+}
+
+.back {
+  background: #0b7a75;
+  color: #ffffff;
+  transform: rotateY(180deg);
+}
+
+.card.returning .card-inner {
+  animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
